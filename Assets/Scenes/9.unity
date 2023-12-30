@@ -126010,8 +126010,8 @@ GameObject:
   - component: {fileID: 1792351586}
   - component: {fileID: 1792351585}
   - component: {fileID: 1792351584}
-  - component: {fileID: 1792351587}
   - component: {fileID: 1792351588}
+  - component: {fileID: 1792351589}
   m_Layer: 0
   m_Name: Last Summon
   m_TagString: Untagged
@@ -126107,19 +126107,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1792351587
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1792351583}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c15e052a549a9174196953c88dd73aa3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  sceneName: End
 --- !u!58 &1792351588
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -126155,6 +126142,19 @@ CircleCollider2D:
   m_Offset: {x: -0.0032807193, y: 0}
   serializedVersion: 2
   m_Radius: 0.17428775
+--- !u!114 &1792351589
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1792351583}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c15e052a549a9174196953c88dd73aa3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sceneName: End
 --- !u!1 &1798835848
 GameObject:
   m_ObjectHideFlags: 0

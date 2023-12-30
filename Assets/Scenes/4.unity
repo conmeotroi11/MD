@@ -31927,7 +31927,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   goldCoinPrefab: {fileID: 3052692635229815541, guid: 04faceabe654e9d4bbe208dce756f292, type: 3}
-  numberOfCoinsToSpawn: 10
+  numberOfCoinsToSpawn: 20
 --- !u!114 &1100707204
 MonoBehaviour:
   m_ObjectHideFlags: 0

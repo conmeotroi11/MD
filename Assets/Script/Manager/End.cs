@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Rendering;
 using UnityEngine.SceneManagement;
 
 public class End : MonoBehaviour
@@ -16,10 +17,9 @@ public class End : MonoBehaviour
     private IEnumerator ResetRoutine()
     {
         Save.DeteleKey();
-        Time.timeScale = 0f;
         yield return new WaitForSecondsRealtime(10);
-        SceneManager.LoadScene("Start", LoadSceneMode.Single);
-        Time.timeScale = 1f;
+        Application.Quit();
+
     }
     
 
