@@ -1,2 +1,2 @@
-# MD
+# Magic Dungeon
  
