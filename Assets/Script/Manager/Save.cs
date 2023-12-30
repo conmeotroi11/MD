@@ -22,7 +22,7 @@ public static class Save
 
     }
 
-    public static void DeteleKey()
+    public static void DeleteKey()
     {
         PlayerPrefs.DeleteAll();
         

@@ -16,8 +16,10 @@ public class End : MonoBehaviour
 
     private IEnumerator ResetRoutine()
     {
-        Save.DeteleKey();
+        Save.DeleteKey();
+        AudioListener.volume = 0f;
         yield return new WaitForSecondsRealtime(10);
+        AudioListener.volume = 1f;
         Application.Quit();
 
     }
