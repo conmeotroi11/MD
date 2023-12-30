@@ -47,7 +47,7 @@ public class Pickup : MonoBehaviour
     {
         if (collision.CompareTag("Player"))
         {
-            CoinManager.Instance.coin++;
+            CoinManager.Instance.Coin++;
             SFXManager.Instance.PlayAudio(4);
             Destroy(gameObject);
         }

@@ -7,7 +7,12 @@ using System.Runtime.InteropServices;
 public class CoinManager : Singleton<CoinManager>
 {
     [SerializeField] private TextMeshProUGUI coinCount;
-    public  int coin = 0;
+    private  int coin = 0;
+    public int Coin 
+    { 
+        get { return coin; } 
+        set { coin = value; }
+    }
 
     protected override void Awake()
     {

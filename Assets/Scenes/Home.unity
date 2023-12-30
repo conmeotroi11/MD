@@ -1796,7 +1796,7 @@ MonoBehaviour:
   - {fileID: 1647786691}
   - {fileID: 607941924}
   - {fileID: 1606639269}
-  price: 320000006400000064000000
+  price: 1e0000003200000032000000
   priceText:
   - {fileID: 2110772357}
   - {fileID: 1778385423}
@@ -1830,6 +1830,8 @@ MonoBehaviour:
   - It seems like everyone has already explained everything to you.
   - The door ahead is the entrance to the dungeon.
   - Be careful with the monsters , they can appear unexpectedly.
+  - Remember, you must completely eliminate the monsters in the dungeon for the door
+    to the next room to appear.
   - ' I''ve cast some spells to help restore your health inside the dungeon. Good
     luck.'
   wordSpeed: 0.02
@@ -2106,7 +2108,7 @@ MonoBehaviour:
   upgradeButtonText:
   - {fileID: 876074435}
   - {fileID: 652656828}
-  price: 050000001e000000
+  price: 0500000014000000
   priceText:
   - {fileID: 821347400}
   - {fileID: 394393527}
@@ -78772,7 +78774,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7eb9486251d31b94c93059f73279ecaf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  scene: 4
+  scene: 0
 --- !u!1 &1480957411
 GameObject:
   m_ObjectHideFlags: 0
@@ -79190,7 +79192,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ad39b280b41b4b439c949c90e5dc988, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  secondBossDeath: 1
 --- !u!1 &1545872001
 GameObject:
   m_ObjectHideFlags: 0

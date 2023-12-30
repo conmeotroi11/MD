@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 
 public class HomeGate : MonoBehaviour
 {
-     private string sceneName;
+    private string sceneName;
     [SerializeField] private int scene;
 
     private float waitToLoadTime = 2f;
@@ -19,7 +19,7 @@ public class HomeGate : MonoBehaviour
             scene = 5;
             SaveScene();
         }
-        if(PlayerCheck.Instance.SecondBossDeath == true ) 
+        if (PlayerCheck.Instance.SecondBossDeath == true)
         {
             scene = 9;
             SaveScene();
@@ -63,7 +63,7 @@ public class HomeGate : MonoBehaviour
 
     private void LoadScene()
     {
-       scene = PlayerPrefs.GetInt("Gate",1);
+        scene = PlayerPrefs.GetInt("Gate", 1);
     }
 
 }

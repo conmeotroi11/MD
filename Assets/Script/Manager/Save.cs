@@ -8,7 +8,7 @@ public static class Save
     {
         PlayerPrefs.SetInt("Health", PlayerHealth.Instance.MaxHealth);
         PlayerPrefs.SetFloat("Speed", PlayerController.Instance.MoveSpeed);
-        PlayerPrefs.SetInt("Coin", CoinManager.Instance.coin);
+        PlayerPrefs.SetInt("Coin", CoinManager.Instance.Coin);
         PlayerPrefs.SetInt("WeaponID", WeaponID.WeaponIDs);
         PlayerPrefs.Save();
     }
@@ -17,7 +17,7 @@ public static class Save
         if (!PlayerPrefs.HasKey("Health") && !PlayerPrefs.HasKey("Speed") && !PlayerPrefs.HasKey("Coin") && !PlayerPrefs.HasKey("WeaponID")) { return; }
         PlayerHealth.Instance.MaxHealth = PlayerPrefs.GetInt("Health");
         PlayerController.Instance.MoveSpeed = PlayerPrefs.GetFloat("Speed");
-        CoinManager.Instance.coin = PlayerPrefs.GetInt("Coin");
+        CoinManager.Instance.Coin = PlayerPrefs.GetInt("Coin");
         WeaponID.WeaponIDs = PlayerPrefs.GetInt("WeaponID");
 
     }

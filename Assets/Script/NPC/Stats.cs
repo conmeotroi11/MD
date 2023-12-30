@@ -27,12 +27,12 @@ public class Stats : MonoBehaviour
         for (int i = 0; i < price.Count; i++)
         {
             {
-                if (CoinManager.Instance.coin >= price[i])
+                if (CoinManager.Instance.Coin >= price[i])
                 {
                     upgradeButton[i].interactable = true;
                     upgradeButtonText[i].text = "Upgrade";
                 }
-                else if (CoinManager.Instance.coin < price[i])
+                else if (CoinManager.Instance.Coin < price[i])
                 {
                     upgradeButton[i].interactable = false;
                     upgradeButtonText[i].text = "Lock";
@@ -56,7 +56,7 @@ public class Stats : MonoBehaviour
         {
             if(PlayerHealth.Instance.MaxHealth < 100)
             {
-                CoinManager.Instance.coin -= price[statsIndex];
+                CoinManager.Instance.Coin -= price[statsIndex];
                 PlayerHealth.Instance.MaxHealth += 1;
                 PlayerHealth.Instance.CurrentHealth = PlayerHealth.Instance.MaxHealth;
                 PlayerHealth.Instance.UpdateHealthSlider();
@@ -65,9 +65,9 @@ public class Stats : MonoBehaviour
         }
         if(statsIndex == 1)
         {
-            if(PlayerController.Instance.MoveSpeed < 25)
+            if(PlayerController.Instance.MoveSpeed < 20)
             {
-                CoinManager.Instance.coin -= price[statsIndex];
+                CoinManager.Instance.Coin -= price[statsIndex];
                 PlayerController.Instance.MoveSpeed += 1;
             }
             

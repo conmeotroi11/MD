@@ -36,12 +36,12 @@ public class Shop : MonoBehaviour
 
         for (int i = 0;i < price.Count; i++) 
         {
-            if (CoinManager.Instance.coin >= price[i])
+            if (CoinManager.Instance.Coin >= price[i])
             {
                 buyButton[i].interactable = true;
                 buyButtonText[i].text = "Buy";
             }
-            else if (CoinManager.Instance.coin < price[i])
+            else if (CoinManager.Instance.Coin < price[i])
             {
                 buyButton[i].interactable = false;
                 buyButtonText[i].text = "Lock";
@@ -56,7 +56,7 @@ public class Shop : MonoBehaviour
         if (weaponIndex >= 0 && weaponIndex < weapons.Count)
         {
            
-            CoinManager.Instance.coin -= price[weaponIndex];
+            CoinManager.Instance.Coin -= price[weaponIndex];
             Destroy(Weapon.transform.GetChild(0).gameObject);
             Instantiate(weapons[weaponIndex], Weapon.transform);
             Destroy(Pool.transform.GetChild(0).gameObject);
