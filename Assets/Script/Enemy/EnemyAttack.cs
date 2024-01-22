@@ -6,7 +6,7 @@ public class EnemyAttack : MonoBehaviour
 {
     [SerializeField] private GameObject bulletPrefab;
     [SerializeField] private int burstCount;
-    [SerializeField] private float timeBetweenBurst;
+
     [SerializeField] private float restTime;
     private bool isShooting = false;
     private Animator animator;
@@ -19,9 +19,7 @@ public class EnemyAttack : MonoBehaviour
     {
         if (!isShooting)
         {
-            
-            StartCoroutine(ShootRoutine());
-            
+            StartCoroutine(RandomShottingRoutine());
 
         }
     }
@@ -36,7 +34,7 @@ public class EnemyAttack : MonoBehaviour
             animator.SetTrigger("Attack");
             GameObject newBullet = Instantiate(bulletPrefab, transform.position, Quaternion.identity);
             newBullet.transform.right = targetDirection;
-            yield return new WaitForSeconds(timeBetweenBurst);
+
 
         }
 
@@ -45,5 +43,11 @@ public class EnemyAttack : MonoBehaviour
         yield return new WaitForSeconds(restTime);
         isShooting = false;
 
+    }
+    private IEnumerator RandomShottingRoutine() 
+    {
+        float randomDelay = Random.Range(1, 3);
+        yield return new WaitForSeconds(randomDelay);
+        StartCoroutine(ShootRoutine());
     }
 }
