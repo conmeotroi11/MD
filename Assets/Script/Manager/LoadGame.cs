@@ -12,6 +12,7 @@ public class LoadGame : MonoBehaviour
     {
         Save.LoadData();
         WeaponLoad();
+        
 
 
     }

@@ -6,13 +6,16 @@ public class PlayerCheck : Singleton<PlayerCheck>
 {
     private bool firstBossDeath = false;
     private bool secondBossDeath = false;
+    private bool defeatEnemy = false;
     public bool FirstBossDeath { get { return firstBossDeath; }}
     public bool SecondBossDeath { get { return secondBossDeath; }}
+    public bool DefeatEnemy { get { return defeatEnemy; }}
     private void Start()
     {
         LoadData();
         FirstBossDeathEvent.FirstBossDeath += FirstBossDefeat;
         SecondBossDeathEvent.SecondBossDeath += SecondBossDefeat;
+        QuestEvent.DefeatEnemy += DefeatEnemies;
     }
 
     private void FirstBossDefeat()
@@ -25,10 +28,17 @@ public class PlayerCheck : Singleton<PlayerCheck>
         secondBossDeath = true;
         SaveData();
     }
+
+    private void DefeatEnemies()
+    {
+        defeatEnemy = true;
+        SaveData() ;
+    }
     private void SaveData()
     {
         PlayerPrefs.SetInt("FirstBossDeath", firstBossDeath ? 1 : 0);
         PlayerPrefs.SetInt("SecondBossDeath", secondBossDeath ? 1 : 0);
+        PlayerPrefs.SetInt("DefeatEnemies", defeatEnemy ? 1 : 0);
         PlayerPrefs.Save();
     }
 
@@ -36,5 +46,6 @@ public class PlayerCheck : Singleton<PlayerCheck>
     {
         firstBossDeath = PlayerPrefs.GetInt("FirstBossDeath", 0) == 1;
         secondBossDeath = PlayerPrefs.GetInt("SecondBossDeath", 0) == 1;
+        defeatEnemy = PlayerPrefs.GetInt("DefeatEnemies", 0) == 1;
     }
 }
