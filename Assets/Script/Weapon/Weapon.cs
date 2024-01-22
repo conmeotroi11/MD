@@ -22,13 +22,17 @@ public abstract class Weapon : MonoBehaviour
 
     protected virtual void Start()
     {
+
         inputActions.Attack.Hit.started += _ => Attack();
+  
     }
 
     protected virtual void Update()
     {
         WeaponFlip();
         AttackCooldown();
+        AutoAttack();
+
     }
 
     public virtual void Attack() { }
@@ -47,5 +51,12 @@ public abstract class Weapon : MonoBehaviour
             }
         }
 
+    }
+    private void AutoAttack() 
+    {
+        if (inputActions.Attack.Hit.ReadValue<float>() == 1.0f)
+        {
+            Attack();
+        }
     }
 }
