@@ -164,5 +164,6 @@ MonoBehaviour:
   moveSpeed: 20
   damageAmount: 1
   enemyFireAttackVFXDeath: {fileID: 1645801044292590791, guid: 3c23bed64a5750b41aea3b8b2be2a56d, type: 3}
-  maxDistance: 10
-  destroyDistance: 10
+  maxDistance: 12
+  destroyDistance: 12
+  speedDecreaseRate: 10

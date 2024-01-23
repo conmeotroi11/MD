@@ -8,10 +8,12 @@ public class ButcherEnemyFireAttack : MonoBehaviour
     [SerializeField] private float moveSpeed;
     [SerializeField] private int damageAmount;
     [SerializeField] private GameObject enemyFireAttackVFXDeath;
-    [SerializeField] private float maxDistance; 
+    [SerializeField] private float maxDistance;
     [SerializeField] private float destroyDistance;
+    [SerializeField] private float speedDecreaseRate;
 
     private float distanceTraveled;
+
 
     void Update()
     {
@@ -25,17 +27,21 @@ public class ButcherEnemyFireAttack : MonoBehaviour
 
         if (distanceTraveled >= maxDistance)
         {
-            moveSpeed *= -1; 
-            distanceTraveled = 0; 
+            moveSpeed = -20;
+            distanceTraveled = 0;
         }
         if (Mathf.Abs(distanceTraveled) >= destroyDistance)
         {
             Destroy(gameObject);
         }
+        moveSpeed -= speedDecreaseRate * Time.deltaTime;
+
+        Debug.Log(moveSpeed);
+ 
     }
-    private void OnTriggerEnter2D(Collider2D collision) 
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.transform.CompareTag("Player")) 
+        if (collision.transform.CompareTag("Player"))
         {
             PlayerHealth.Instance.TakeDame(damageAmount, transform);
             Instantiate(enemyFireAttackVFXDeath, transform.position, transform.rotation);
@@ -49,7 +55,7 @@ public class ButcherEnemyFireAttack : MonoBehaviour
             SFXManager.Instance.PlayAudio(7);
             Destroy(gameObject);
         }
-      
+
 
     }
 }
