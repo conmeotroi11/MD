@@ -10,7 +10,7 @@ public class EnemyAI : MonoBehaviour
     [SerializeField] private bool stopMovingWhileAttack = false;
     private bool canAttack = true;
     private bool isChasingPlayer = false;
-    private EnemyAttack enemyAttack;
+    public MonoBehaviour eAttack;
     private enum State
     {
         Roaming,
@@ -24,7 +24,7 @@ public class EnemyAI : MonoBehaviour
 
     private void Awake()
     {
-        enemyAttack = GetComponent<EnemyAttack>();
+        
         enemyPathfinding = GetComponent<EnemyPathfinding>();
         state = State.Roaming;
     }
@@ -83,7 +83,7 @@ public class EnemyAI : MonoBehaviour
         if (canAttack)
         {
             canAttack = false;
-            enemyAttack.Attack();
+           (eAttack as IEnemyAttack).Attack();
             
 
             if (stopMovingWhileAttack)

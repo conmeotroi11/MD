@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 8839924228321029321}
   - component: {fileID: 2093830922971174263}
   - component: {fileID: 7500735168007833802}
-  - component: {fileID: 6973690191686479941}
+  - component: {fileID: -2071849416483758027}
   - component: {fileID: 3345701034085853442}
   - component: {fileID: 7021504691839892003}
   - component: {fileID: 964542162145281387}
@@ -155,10 +155,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   roamChangeDirFloat: 5
-  attackRange: 15
-  attackCooldown: 1
-  stopMovingWhileAttack: 0
---- !u!114 &6973690191686479941
+  attackRange: 10
+  attackCooldown: 2
+  stopMovingWhileAttack: 1
+  eAttack: {fileID: -2071849416483758027}
+--- !u!114 &-2071849416483758027
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -167,13 +168,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 1639042111531526892}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 81ef70ac708967f478e69dcfcee1f382, type: 3}
+  m_Script: {fileID: 11500000, guid: 22c687c9d7c9a2a438039fe89eb62da3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bulletPrefab: {fileID: 5784067213749023552, guid: 600cca2248290894a80b5ca724199c6f, type: 3}
+  bulletPrefab: {fileID: 5784067213749023552, guid: bd7d638f6eee2244c8ab83ad6f71cd16, type: 3}
   burstCount: 3
-  timeBetweenBurst: 0.5
-  restTime: 1
+  restTime: 0
 --- !u!114 &3345701034085853442
 MonoBehaviour:
   m_ObjectHideFlags: 0

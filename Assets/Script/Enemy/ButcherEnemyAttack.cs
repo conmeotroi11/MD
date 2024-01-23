@@ -1,8 +1,8 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyAttack : MonoBehaviour, IEnemyAttack
+public class ButcherEnemyAttack : MonoBehaviour , IEnemyAttack
 {
     [SerializeField] private GameObject bulletPrefab;
     [SerializeField] private int burstCount;
@@ -26,22 +26,23 @@ public class EnemyAttack : MonoBehaviour, IEnemyAttack
     private IEnumerator ShootRoutine()
     {
         isShooting = true;
+        animator.SetTrigger("Attack");
         for (int i = 0; i < burstCount; i++)
         {
-            
-            Vector2 targetDirection = PlayerController.Instance.transform.position - transform.position;
+            Vector2 targetDirection = (PlayerController.Instance.transform.position - transform.position).normalized;
+            float angle = Mathf.Atan2(targetDirection.y, targetDirection.x) * Mathf.Rad2Deg;
             SFXManager.Instance.PlayAudio(5);
-            animator.SetTrigger("Attack");
+            float bulletAngle = angle + i * (10f);
             GameObject newBullet = Instantiate(bulletPrefab, transform.position, Quaternion.identity);
-            newBullet.transform.right = targetDirection;
-            yield return new WaitForSeconds(restTime);
+            newBullet.transform.rotation = Quaternion.AngleAxis(bulletAngle, Vector3.forward);
 
+            yield return new WaitForSeconds(restTime);
         }
 
         isShooting = false;
-
     }
-    private IEnumerator RandomShottingRoutine() 
+
+    private IEnumerator RandomShottingRoutine()
     {
         float randomDelay = Random.Range(1, 3);
         yield return new WaitForSeconds(randomDelay);

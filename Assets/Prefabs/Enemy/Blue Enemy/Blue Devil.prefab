@@ -191,7 +191,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bulletPrefab: {fileID: 5784067213749023552, guid: 600cca2248290894a80b5ca724199c6f, type: 3}
   burstCount: 1
-  timeBetweenBurst: 1
   restTime: 1
 --- !u!114 &7873174443180247637
 MonoBehaviour:
@@ -209,6 +208,7 @@ MonoBehaviour:
   attackRange: 14
   attackCooldown: 1
   stopMovingWhileAttack: 0
+  eAttack: {fileID: 3032806812027843116}
 --- !u!114 &7009723396064301405
 MonoBehaviour:
   m_ObjectHideFlags: 0
