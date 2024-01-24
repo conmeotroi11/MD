@@ -7,7 +7,7 @@ public class SpawnEnemy : MonoBehaviour
     [SerializeField] private GameObject summonVfx;
     [SerializeField] private GameObject colliderBlock;
     [SerializeField] private SpawnEnemyObjectPooling pool;
-    [SerializeField] private List<GameObject> spawnPoint;
+
     private Collider2D coll;
     private bool enemiesSpawned = false;
 
@@ -44,12 +44,14 @@ public class SpawnEnemy : MonoBehaviour
             SFXManager.Instance.PlayAudio(9);
             colliderBlock.SetActive(true);
 
+
             foreach (EnemySpawnInfo enemyInfo in enemiesToSpawn)
             {
                 for (int i = 0; i < enemyInfo.spawnCount; i++)
                 {
+                    Vector2 randomPosition = new Vector2(Random.Range(coll.bounds.min.x, coll.bounds.max.x),Random.Range(coll.bounds.min.y, coll.bounds.max.y));
                     GameObject pooledObject = pool.GetPooledObject(enemyInfo.enemyType);
-                    pooledObject.transform.position = spawnPoint[i].transform.position;
+                    pooledObject.transform.position = randomPosition;
                     pooledObject.SetActive(true);
                     Instantiate(summonVfx, pooledObject.transform.position, Quaternion.identity);
                 }
@@ -59,4 +61,5 @@ public class SpawnEnemy : MonoBehaviour
             coll.enabled = false;
         }
     }
+   
 }
