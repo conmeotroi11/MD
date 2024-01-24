@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyFireAttack : MonoBehaviour
+public class CloneEnemyFireAttack : MonoBehaviour
 {
 
     [SerializeField] private float moveSpeed;
@@ -24,14 +24,14 @@ public class EnemyFireAttack : MonoBehaviour
             PlayerHealth.Instance.TakeDame(damageAmount, transform);
             Instantiate(enemyFireAttackVFXDeath, transform.position, transform.rotation);
             SFXManager.Instance.PlayAudio(7);
-            gameObject.SetActive(false);
+            Destroy(gameObject);
         }
 
         if (collision.transform.CompareTag("Collider"))
         {
             Instantiate(enemyFireAttackVFXDeath, transform.position, transform.rotation);
             SFXManager.Instance.PlayAudio(7);
-            gameObject.SetActive(false);
+            Destroy(gameObject);
         }
 
     }

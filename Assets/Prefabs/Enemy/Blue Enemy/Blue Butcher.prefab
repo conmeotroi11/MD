@@ -39,7 +39,8 @@ Transform:
   m_LocalPosition: {x: 11.5, y: -1.86, z: 0}
   m_LocalScale: {x: 0.8, y: 0.8, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 9123700311980040818}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &4928887784966669945
@@ -171,9 +172,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 22c687c9d7c9a2a438039fe89eb62da3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bulletPrefab: {fileID: 5784067213749023552, guid: bd7d638f6eee2244c8ab83ad6f71cd16, type: 3}
   burstCount: 3
   restTime: 0
+  pooling: {fileID: 7098094832629341592}
 --- !u!114 &3345701034085853442
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -276,3 +277,49 @@ CapsuleCollider2D:
   m_Offset: {x: -0.38654873, y: -0.95716465}
   m_Size: {x: 1.3708115, y: 3.8981729}
   m_Direction: 0
+--- !u!1 &5945488928566752721
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 9123700311980040818}
+  - component: {fileID: 7098094832629341592}
+  m_Layer: 0
+  m_Name: Fire Pooling
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &9123700311980040818
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5945488928566752721}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 734374524263846896}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &7098094832629341592
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5945488928566752721}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 88dd0e77aa944784c8da36adf13d0d72, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pooledObject: {fileID: 5784067213749023552, guid: bd7d638f6eee2244c8ab83ad6f71cd16, type: 3}
+  pooledAmount: 6

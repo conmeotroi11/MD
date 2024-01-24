@@ -12,9 +12,9 @@ GameObject:
   - component: {fileID: 1942151102316440654}
   - component: {fileID: 3843370366400326112}
   - component: {fileID: 3475280839186997719}
-  - component: {fileID: -324460565288902482}
+  - component: {fileID: -9120616709691497384}
   m_Layer: 0
-  m_Name: Nercomancer Devil Fire Attack
+  m_Name: Clone Blue Devil Fire Attack 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -149,7 +149,7 @@ CapsuleCollider2D:
   m_Offset: {x: 0, y: 0}
   m_Size: {x: 0.5, y: 0.5}
   m_Direction: 0
---- !u!114 &-324460565288902482
+--- !u!114 &-9120616709691497384
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -158,12 +158,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 5784067213749023552}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 467a264adc93c78429c06fac5372b2fe, type: 3}
+  m_Script: {fileID: 11500000, guid: e9e0ef96ff6618b4d912db23172cacc4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 20
-  damageAmount: 3
+  damageAmount: 1
   enemyFireAttackVFXDeath: {fileID: 1645801044292590791, guid: 3c23bed64a5750b41aea3b8b2be2a56d, type: 3}
-  FireAttackVFXDeath: {fileID: 5784067213749023552, guid: 226f5c4cb1d587440968cca50af9007c, type: 3}
-  burstCount: 5
-  maxDistance: 15

@@ -4,12 +4,11 @@ using UnityEngine;
 
 public class ButcherEnemyAttack : MonoBehaviour , IEnemyAttack
 {
-    [SerializeField] private GameObject bulletPrefab;
     [SerializeField] private int burstCount;
-
     [SerializeField] private float restTime;
     private bool isShooting = false;
     private Animator animator;
+    [SerializeField] private EnemyObjectPooling pooling;
 
     private void Awake()
     {
@@ -33,9 +32,10 @@ public class ButcherEnemyAttack : MonoBehaviour , IEnemyAttack
             float angle = Mathf.Atan2(targetDirection.y, targetDirection.x) * Mathf.Rad2Deg;
             SFXManager.Instance.PlayAudio(5);
             float bulletAngle = angle + i * (10f);
-            GameObject newBullet = Instantiate(bulletPrefab, transform.position, Quaternion.identity);
-            newBullet.transform.rotation = Quaternion.AngleAxis(bulletAngle, Vector3.forward);
-
+            GameObject newFire = pooling.GetPooledObject();
+            newFire.transform.position = transform.position;
+            newFire.transform.rotation = Quaternion.AngleAxis(bulletAngle, Vector3.forward);
+            newFire.SetActive(true);
             yield return new WaitForSeconds(restTime);
         }
 

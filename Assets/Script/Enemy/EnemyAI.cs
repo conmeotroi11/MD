@@ -124,7 +124,7 @@ public class EnemyAI : MonoBehaviour
     private void OnCollisionEnter2D(Collision2D collision)
     {
        
-        if (collision.collider.CompareTag("Collider"))
+        if (collision.collider.CompareTag("Collider") && !canAttack )
         {
             roamPostion = GetRoamingPosition();
         }

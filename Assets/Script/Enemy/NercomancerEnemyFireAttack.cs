@@ -37,7 +37,7 @@ public class NercomancerEnemyFireAttack : MonoBehaviour
             float angle = i * angleStep;
             Vector3 direction = Quaternion.Euler(0, 0, angle) * Vector3.right;
             Instantiate(FireAttackVFXDeath, transform.position, Quaternion.LookRotation(Vector3.forward, direction));
-            Destroy(gameObject);
+            ResetFire();
         }
     }
 
@@ -48,7 +48,7 @@ public class NercomancerEnemyFireAttack : MonoBehaviour
             PlayerHealth.Instance.TakeDame(damageAmount, transform);
             Instantiate(enemyFireAttackVFXDeath, transform.position, transform.rotation);
             SFXManager.Instance.PlayAudio(7);
-            Destroy(gameObject);
+            ResetFire();
         }
 
         if (collision.transform.CompareTag("Collider"))
@@ -56,8 +56,14 @@ public class NercomancerEnemyFireAttack : MonoBehaviour
             Burst();
             Instantiate(enemyFireAttackVFXDeath, transform.position, transform.rotation);
             SFXManager.Instance.PlayAudio(7);
-            Destroy(gameObject);
+            ResetFire();
         }
 
+    }
+
+    private void ResetFire()
+    {
+        distanceTraveled = 0;
+        gameObject.SetActive(false);
     }
 }

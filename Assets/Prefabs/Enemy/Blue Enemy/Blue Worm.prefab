@@ -39,7 +39,8 @@ Transform:
   m_LocalPosition: {x: 17.571352, y: -0.9758714, z: 0}
   m_LocalScale: {x: 0.5, y: 0.5, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 7323305523698145405}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &1402000771623390916
@@ -238,6 +239,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bulletPrefab: {fileID: 5784067213749023552, guid: 600cca2248290894a80b5ca724199c6f, type: 3}
   burstCount: 1
+  pooling: {fileID: 5867367467049531723}
   restTime: 1
 --- !u!114 &8703992503086236446
 MonoBehaviour:
@@ -306,3 +308,49 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   whiteFlashMat: {fileID: 2100000, guid: 186e24c7c0b86a94181d0728fdf61d57, type: 2}
+--- !u!1 &7484685260144406438
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7323305523698145405}
+  - component: {fileID: 5867367467049531723}
+  m_Layer: 0
+  m_Name: 'Fire Pooling '
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7323305523698145405
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7484685260144406438}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 1.0075645, y: 0.44794333, z: 0}
+  m_LocalScale: {x: 1.6, y: 1.6, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 8944457623801945113}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5867367467049531723
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7484685260144406438}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 88dd0e77aa944784c8da36adf13d0d72, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pooledObject: {fileID: 5784067213749023552, guid: 600cca2248290894a80b5ca724199c6f, type: 3}
+  pooledAmount: 5

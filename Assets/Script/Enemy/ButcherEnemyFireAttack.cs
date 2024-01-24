@@ -13,7 +13,12 @@ public class ButcherEnemyFireAttack : MonoBehaviour
     [SerializeField] private float speedDecreaseRate;
 
     private float distanceTraveled;
+    private Vector2 initialPosition;
 
+    private void Start()
+    {
+        initialPosition = transform.position;
+    }
 
     void Update()
     {
@@ -32,7 +37,9 @@ public class ButcherEnemyFireAttack : MonoBehaviour
         }
         if (Mathf.Abs(distanceTraveled) >= destroyDistance)
         {
-            Destroy(gameObject);
+            ResetFire();
+            
+            
         }
         moveSpeed -= speedDecreaseRate * Time.deltaTime;
 
@@ -45,16 +52,27 @@ public class ButcherEnemyFireAttack : MonoBehaviour
             PlayerHealth.Instance.TakeDame(damageAmount, transform);
             Instantiate(enemyFireAttackVFXDeath, transform.position, transform.rotation);
             SFXManager.Instance.PlayAudio(7);
-            Destroy(gameObject);
+            ResetFire();
+            
         }
 
         if (collision.transform.CompareTag("Collider"))
         {
             Instantiate(enemyFireAttackVFXDeath, transform.position, transform.rotation);
             SFXManager.Instance.PlayAudio(7);
-            Destroy(gameObject);
+            ResetFire();
+            
         }
 
+       
 
+
+    }
+
+    private void ResetFire()
+    {
+        moveSpeed = 20;
+        distanceTraveled = 0;
+        gameObject.SetActive(false);
     }
 }

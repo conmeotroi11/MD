@@ -6,7 +6,7 @@ public class EnemyAttack : MonoBehaviour, IEnemyAttack
 {
     [SerializeField] private GameObject bulletPrefab;
     [SerializeField] private int burstCount;
-
+    [SerializeField] private EnemyObjectPooling pooling;
     [SerializeField] private float restTime;
     private bool isShooting = false;
     private Animator animator;
@@ -32,8 +32,10 @@ public class EnemyAttack : MonoBehaviour, IEnemyAttack
             Vector2 targetDirection = PlayerController.Instance.transform.position - transform.position;
             SFXManager.Instance.PlayAudio(5);
             animator.SetTrigger("Attack");
-            GameObject newBullet = Instantiate(bulletPrefab, transform.position, Quaternion.identity);
-            newBullet.transform.right = targetDirection;
+            GameObject newFire = pooling.GetPooledObject();
+            newFire.transform.position = transform.position;
+            newFire.transform.right = targetDirection;
+            newFire.SetActive(true);
             yield return new WaitForSeconds(restTime);
 
         }
