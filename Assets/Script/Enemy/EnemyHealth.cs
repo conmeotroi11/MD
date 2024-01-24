@@ -45,8 +45,9 @@ public class EnemyHealth : MonoBehaviour
         {
             GetComponent<PickUpSpawner>().DropItems();
             SFXManager.Instance.PlayAudio(10);
-            Instantiate(deathVFXPrefabs, transform.position, Quaternion.identity); 
-            Destroy(gameObject); 
+            Instantiate(deathVFXPrefabs, transform.position, Quaternion.identity);
+            currentHealth = startHealth;
+            gameObject.SetActive(false);
 
         }
     }

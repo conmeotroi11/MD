@@ -4,52 +4,59 @@ using UnityEngine;
 
 public class SpawnEnemy : MonoBehaviour
 {
-    [SerializeField] private List<GameObject> enemies;
     [SerializeField] private GameObject summonVfx;
     [SerializeField] private GameObject colliderBlock;
+    [SerializeField] private SpawnEnemyObjectPooling pool;
+    [SerializeField] private List<GameObject> spawnPoint;
     private Collider2D coll;
+    private bool enemiesSpawned = false;
 
+    [System.Serializable]
+    public class EnemySpawnInfo
+    {
+        public int enemyType;
+        public int spawnCount;
+    }
+
+    [SerializeField] private List<EnemySpawnInfo> enemiesToSpawn;
 
     private void Awake()
     {
         coll = GetComponent<Collider2D>();
     }
 
-
-    private void Update()
+    void Update()
     {
-        bool allEnemiesDestroyed = true;
-        foreach (GameObject enemy in enemies)
+        if (enemiesSpawned)
         {
-            if (enemy != null)
+            if (pool.AreAllPooledObjectsInactive())
             {
-               
-                allEnemiesDestroyed = false;
-                break;
+                Destroy(colliderBlock);
+                Destroy(gameObject);
             }
         }
-        if (allEnemiesDestroyed)
-        {
-            Destroy(colliderBlock);
-            Destroy(gameObject);
-
-        }
     }
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.CompareTag("Player"))
+        if (collision.CompareTag("Player") && !enemiesSpawned)
         {
-            foreach (GameObject enemy in enemies)
-            {
-                SFXManager.Instance.PlayAudio(9);
-                colliderBlock.SetActive(true);
-                Instantiate(summonVfx, enemy.transform.position, Quaternion.identity);
-                enemy.SetActive(true);
-                coll.enabled = false;
-            }
-        }
+            SFXManager.Instance.PlayAudio(9);
+            colliderBlock.SetActive(true);
 
-        
+            foreach (EnemySpawnInfo enemyInfo in enemiesToSpawn)
+            {
+                for (int i = 0; i < enemyInfo.spawnCount; i++)
+                {
+                    GameObject pooledObject = pool.GetPooledObject(enemyInfo.enemyType);
+                    pooledObject.transform.position = spawnPoint[i].transform.position;
+                    pooledObject.SetActive(true);
+                    Instantiate(summonVfx, pooledObject.transform.position, Quaternion.identity);
+                }
+            }
+
+            enemiesSpawned = true;
+            coll.enabled = false;
+        }
     }
-    
 }

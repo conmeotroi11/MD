@@ -158,7 +158,7 @@ MonoBehaviour:
   roamChangeDirFloat: 5
   attackRange: 10
   attackCooldown: 2
-  stopMovingWhileAttack: 1
+  stopMovingWhileAttack: 0
   eAttack: {fileID: -2071849416483758027}
 --- !u!114 &-2071849416483758027
 MonoBehaviour:
