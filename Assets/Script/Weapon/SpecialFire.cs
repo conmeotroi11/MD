@@ -32,7 +32,7 @@ public class SpecialFire : MonoBehaviour
             enemyHealth.TakeDame(damageAmount);
             Instantiate(fireVFXDeath, transform.position, transform.rotation);
             SFXManager.Instance.PlayAudio(1);
-            this.gameObject.SetActive(false);
+            gameObject.SetActive(false);
         }
 
         if (collision.transform.CompareTag("Collider"))
