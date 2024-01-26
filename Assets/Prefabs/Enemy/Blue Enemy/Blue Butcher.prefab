@@ -159,6 +159,7 @@ MonoBehaviour:
   attackRange: 10
   attackCooldown: 2
   stopMovingWhileAttack: 0
+  canAttack: 1
   eAttack: {fileID: -2071849416483758027}
 --- !u!114 &-2071849416483758027
 MonoBehaviour:
@@ -174,7 +175,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   burstCount: 3
   restTime: 0
-  pooling: {fileID: 7098094832629341592}
+  pooling: {fileID: 365673758475220567}
 --- !u!114 &3345701034085853442
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -190,6 +191,7 @@ MonoBehaviour:
   deathVFXPrefabs: {fileID: 1645801044292590791, guid: 3c23bed64a5750b41aea3b8b2be2a56d, type: 3}
   startHealth: 7
   knockBackThurst: 3
+  enemyObjectPooling: {fileID: 5945488928566752721}
 --- !u!114 &7021504691839892003
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -286,7 +288,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 9123700311980040818}
-  - component: {fileID: 7098094832629341592}
+  - component: {fileID: 365673758475220567}
   m_Layer: 0
   m_Name: Fire Pooling
   m_TagString: Untagged
@@ -309,7 +311,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 734374524263846896}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &7098094832629341592
+--- !u!114 &365673758475220567
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

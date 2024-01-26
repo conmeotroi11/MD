@@ -236,10 +236,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 81ef70ac708967f478e69dcfcee1f382, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bulletPrefab: {fileID: 5784067213749023552, guid: 600cca2248290894a80b5ca724199c6f, type: 3}
   burstCount: 1
   pooling: {fileID: 7470859764379217743}
   restTime: 1
+  isShooting: 0
 --- !u!114 &7873174443180247637
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -256,6 +256,7 @@ MonoBehaviour:
   attackRange: 14
   attackCooldown: 1
   stopMovingWhileAttack: 0
+  canAttack: 1
   eAttack: {fileID: 3032806812027843116}
 --- !u!114 &7009723396064301405
 MonoBehaviour:
@@ -285,6 +286,7 @@ MonoBehaviour:
   deathVFXPrefabs: {fileID: 1645801044292590791, guid: 3c23bed64a5750b41aea3b8b2be2a56d, type: 3}
   startHealth: 3
   knockBackThurst: 3
+  enemyObjectPooling: {fileID: 4198916198165643405}
 --- !u!114 &6979702557699282589
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -14,6 +14,17 @@ public class ButcherEnemyAttack : MonoBehaviour , IEnemyAttack
     {
         animator = GetComponent<Animator>();
     }
+    private void OnDisable()
+    {
+
+        StopAllCoroutines();
+
+    }
+
+    private void OnEnable()
+    {
+        isShooting = false;
+    }
     public void Attack()
     {
         if (!isShooting)
@@ -26,17 +37,18 @@ public class ButcherEnemyAttack : MonoBehaviour , IEnemyAttack
     {
         isShooting = true;
         animator.SetTrigger("Attack");
+        SFXManager.Instance.PlayAudio(5);
         for (int i = 0; i < burstCount; i++)
         {
             Vector2 targetDirection = (PlayerController.Instance.transform.position - transform.position).normalized;
             float angle = Mathf.Atan2(targetDirection.y, targetDirection.x) * Mathf.Rad2Deg;
-            SFXManager.Instance.PlayAudio(5);
             float bulletAngle = angle + i * (10f);
             GameObject newFire = pooling.GetPooledObject();
             newFire.transform.position = transform.position;
             newFire.transform.rotation = Quaternion.AngleAxis(bulletAngle, Vector3.forward);
             newFire.SetActive(true);
             yield return new WaitForSeconds(restTime);
+            
         }
 
         isShooting = false;
@@ -46,6 +58,6 @@ public class ButcherEnemyAttack : MonoBehaviour , IEnemyAttack
     {
         float randomDelay = Random.Range(1, 3);
         yield return new WaitForSeconds(randomDelay);
-        StartCoroutine(ShootRoutine());
+        yield return StartCoroutine(ShootRoutine());
     }
 }

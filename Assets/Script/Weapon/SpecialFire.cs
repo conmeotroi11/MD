@@ -20,19 +20,28 @@ public class SpecialFire : MonoBehaviour
         transform.Translate(Vector3.right * moveSpeed * Time.deltaTime);
     }
 
+    private void OnDisable()
+    {
+           StopAllCoroutines();
+    }
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.transform.CompareTag("Enemy"))
         {
             Vector3 nearestEnemyPosition = FindNearestEnemyPosition(transform.position, collision.transform);
             Vector3 spawnFire = nearestEnemyPosition - collision.transform.position;
-            GameObject newFire = Instantiate(firePrefab, transform.position, Quaternion.identity);
-            newFire.transform.right = spawnFire;
+            if (Random.value <= 0.6f)
+            {
+                GameObject newFire = Instantiate(firePrefab, transform.position, Quaternion.identity);
+                newFire.transform.right = spawnFire;
+            }
             EnemyHealth enemyHealth = collision.gameObject.GetComponent<EnemyHealth>();
             enemyHealth.TakeDame(damageAmount);
             Instantiate(fireVFXDeath, transform.position, transform.rotation);
             SFXManager.Instance.PlayAudio(1);
-            gameObject.SetActive(false);
+            StartCoroutine(SetActiveRoutine());
+            
         }
 
         if (collision.transform.CompareTag("Collider"))
@@ -65,6 +74,13 @@ public class SpecialFire : MonoBehaviour
         }
 
         return nearestPosition;
+    }
+
+    private IEnumerator SetActiveRoutine()
+    {
+        
+        yield return new WaitForSeconds(1f);
+        gameObject.SetActive(false);
     }
 
 }

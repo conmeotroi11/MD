@@ -1,29 +1,40 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class EnemyAttack : MonoBehaviour, IEnemyAttack
 {
-    [SerializeField] private GameObject bulletPrefab;
+ 
     [SerializeField] private int burstCount;
     [SerializeField] private EnemyObjectPooling pooling;
     [SerializeField] private float restTime;
-    private bool isShooting = false;
+    [SerializeField] private bool isShooting = false;
     private Animator animator;
 
     private void Awake()
     {
         animator = GetComponent<Animator>();
     }
+    private void OnDisable()
+    {
+       
+        StopAllCoroutines();
+
+    }
+
+    private void OnEnable()
+    {
+        isShooting = false;
+    }
+
     public void Attack()
     {
         if (!isShooting)
         {
-            StartCoroutine(RandomShottingRoutine());
-
+                StartCoroutine(RandomShottingRoutine());
         }
     }
-    private IEnumerator ShootRoutine()
+    public IEnumerator ShootRoutine()
     {
         isShooting = true;
         for (int i = 0; i < burstCount; i++)
@@ -38,15 +49,20 @@ public class EnemyAttack : MonoBehaviour, IEnemyAttack
             newFire.SetActive(true);
             yield return new WaitForSeconds(restTime);
 
+
         }
 
         isShooting = false;
 
     }
-    private IEnumerator RandomShottingRoutine() 
+    public IEnumerator RandomShottingRoutine() 
     {
-        float randomDelay = Random.Range(1, 3);
-        yield return new WaitForSeconds(randomDelay);
-        StartCoroutine(ShootRoutine());
+
+       float randomDelay = Random.Range(1, 3);
+       yield return new WaitForSeconds(randomDelay);
+       StartCoroutine(ShootRoutine());
+        
     }
+
+  
 }

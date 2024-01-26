@@ -13,6 +13,17 @@ public class NercomancerEnemyAttack : MonoBehaviour, IEnemyAttack
     {
         animator = GetComponent<Animator>();
     }
+    private void OnDisable()
+    {
+
+        StopAllCoroutines();
+
+    }
+
+    private void OnEnable()
+    {
+        isShooting = false;
+    }
     public void Attack()
     {
         if (!isShooting)

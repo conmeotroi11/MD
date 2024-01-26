@@ -12,12 +12,17 @@ public class EnemyHealth : MonoBehaviour
     private Knockback knockback; 
     private GetHitFlash GetHitFlash;
     [SerializeField] private float knockBackThurst;
+    [SerializeField] private GameObject enemyObjectPooling;
+
+
 
 
     private void Awake()
     {
         GetHitFlash = GetComponent<GetHitFlash>(); 
-        knockback = GetComponent<Knockback>(); 
+        knockback = GetComponent<Knockback>();
+
+
     }
 
     private void Start()
@@ -47,7 +52,12 @@ public class EnemyHealth : MonoBehaviour
             SFXManager.Instance.PlayAudio(10);
             Instantiate(deathVFXPrefabs, transform.position, Quaternion.identity);
             currentHealth = startHealth;
+            foreach (Transform child in enemyObjectPooling.transform)
+            {
+                child.gameObject.SetActive(false);
+            }
             gameObject.SetActive(false);
+
 
         }
     }

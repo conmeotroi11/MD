@@ -8,7 +8,7 @@ public class EnemyAI : MonoBehaviour
     [SerializeField] private float attackRange;
     [SerializeField] private float attackCooldown;
     [SerializeField] private bool stopMovingWhileAttack = false;
-    private bool canAttack = true;
+    [SerializeField] private bool canAttack = true;
     private bool isChasingPlayer = false;
     public MonoBehaviour eAttack;
     private enum State
@@ -32,6 +32,14 @@ public class EnemyAI : MonoBehaviour
     private void Start()
     {
         roamPostion = GetRoamingPosition();
+    }
+    private void OnDisable()
+    {
+        StopAllCoroutines();
+    }
+    private void OnEnable()
+    {
+        canAttack = true;
     }
     private void Update()
     {
@@ -83,9 +91,7 @@ public class EnemyAI : MonoBehaviour
         if (canAttack)
         {
             canAttack = false;
-           (eAttack as IEnemyAttack).Attack();
-            
-
+            (eAttack as IEnemyAttack).Attack();
             if (stopMovingWhileAttack)
             {
                 enemyPathfinding.StopMoving();
@@ -106,7 +112,7 @@ public class EnemyAI : MonoBehaviour
         enemyPathfinding.FollowTo(playerPosition);
         
     }
-    private IEnumerator AttackCooldownRoutine()
+    public IEnumerator AttackCooldownRoutine()
     {
         yield return new WaitForSeconds(attackCooldown);
         canAttack = true;

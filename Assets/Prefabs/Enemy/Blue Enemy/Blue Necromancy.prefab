@@ -194,6 +194,7 @@ MonoBehaviour:
   attackRange: 20
   attackCooldown: 2
   stopMovingWhileAttack: 0
+  canAttack: 1
   eAttack: {fileID: 2481656017365502080}
 --- !u!114 &2481656017365502080
 MonoBehaviour:
@@ -224,6 +225,7 @@ MonoBehaviour:
   deathVFXPrefabs: {fileID: 1645801044292590791, guid: 3c23bed64a5750b41aea3b8b2be2a56d, type: 3}
   startHealth: 10
   knockBackThurst: 3
+  enemyObjectPooling: {fileID: 5348429959190558991}
 --- !u!114 &4508468102054637989
 MonoBehaviour:
   m_ObjectHideFlags: 0
