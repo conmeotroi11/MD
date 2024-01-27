@@ -1,5 +1,51 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &1097575923472215917
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 9118509327747898421}
+  - component: {fileID: 2660147272659304558}
+  m_Layer: 0
+  m_Name: Fire Pooling
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &9118509327747898421
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1097575923472215917}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -6.3303556, y: 0.16935444, z: 0}
+  m_LocalScale: {x: 0.79999995, y: 0.79999995, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2647615208571783878}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2660147272659304558
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1097575923472215917}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 88dd0e77aa944784c8da36adf13d0d72, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pooledObject: {fileID: 5784067213749023552, guid: 031c39ca106f8f941b57ed5ef804362a, type: 3}
+  pooledAmount: 8
 --- !u!1 &6999016399875474079
 GameObject:
   m_ObjectHideFlags: 0
@@ -13,7 +59,7 @@ GameObject:
   - component: {fileID: 8355248909117074399}
   - component: {fileID: 7985822284252880143}
   - component: {fileID: 7034672360676055173}
-  - component: {fileID: 6180487383322971605}
+  - component: {fileID: 6318055693046606266}
   - component: {fileID: 7896728356928861021}
   - component: {fileID: 7189936525506081253}
   - component: {fileID: 5452840396137612800}
@@ -39,7 +85,8 @@ Transform:
   m_LocalPosition: {x: -4.631008, y: 0.8489387, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 9118509327747898421}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &4979227059446908007
@@ -177,7 +224,7 @@ CapsuleCollider2D:
   m_Offset: {x: -0.086539745, y: -0.37500617}
   m_Size: {x: 1.2499876, y: 2.3124876}
   m_Direction: 0
---- !u!114 &6180487383322971605
+--- !u!114 &6318055693046606266
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -186,13 +233,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 6999016399875474079}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 81ef70ac708967f478e69dcfcee1f382, type: 3}
+  m_Script: {fileID: 11500000, guid: f68e3fed73adc544b98a8fad03cf7d14, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bulletPrefab: {fileID: 7708211058673159694, guid: 7e147e8624228e94b9870c1288868aed, type: 3}
-  burstCount: 8
-  timeBetweenBurst: 0.4
-  restTime: 0.3
+  pooling: {fileID: 2660147272659304558}
+  restTime: 1
 --- !u!114 &7896728356928861021
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -209,6 +254,8 @@ MonoBehaviour:
   attackRange: 20
   attackCooldown: 1
   stopMovingWhileAttack: 1
+  canAttack: 1
+  eAttack: {fileID: 6318055693046606266}
 --- !u!114 &7189936525506081253
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -224,6 +271,8 @@ MonoBehaviour:
   deathVFXPrefabs: {fileID: 6155979720234273674, guid: 4a5ca064586bb464cb35a4f5ded797c2, type: 3}
   startHealth: 13
   knockBackThurst: 3
+  enemyObjectPooling: {fileID: 1097575923472215917}
+  isBoss: 0
 --- !u!114 &5452840396137612800
 MonoBehaviour:
   m_ObjectHideFlags: 0

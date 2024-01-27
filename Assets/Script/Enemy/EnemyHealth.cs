@@ -13,6 +13,7 @@ public class EnemyHealth : MonoBehaviour
     private GetHitFlash GetHitFlash;
     [SerializeField] private float knockBackThurst;
     [SerializeField] private GameObject enemyObjectPooling;
+    [SerializeField] private bool isBoss;
 
 
 
@@ -52,13 +53,19 @@ public class EnemyHealth : MonoBehaviour
             SFXManager.Instance.PlayAudio(10);
             Instantiate(deathVFXPrefabs, transform.position, Quaternion.identity);
             currentHealth = startHealth;
-            foreach (Transform child in enemyObjectPooling.transform)
+            if(isBoss)
             {
-                child.gameObject.SetActive(false);
+                Destroy(gameObject);
             }
-            gameObject.SetActive(false);
+            else
+            {
+                foreach (Transform child in enemyObjectPooling.transform)
+                {
 
-
+                    child.gameObject.SetActive(false);
+                }
+                gameObject.SetActive(false);
+            }
         }
     }
 }

@@ -161,6 +161,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5232f75cbb020e44aa626fbed4e371f2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 25
+  moveSpeed: 20
   damageAmount: 2
   enemyFireAttackVFXDeath: {fileID: 6155979720234273674, guid: 4a5ca064586bb464cb35a4f5ded797c2, type: 3}

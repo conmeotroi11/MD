@@ -226,6 +226,7 @@ MonoBehaviour:
   startHealth: 10
   knockBackThurst: 3
   enemyObjectPooling: {fileID: 5348429959190558991}
+  isBoss: 0
 --- !u!114 &4508468102054637989
 MonoBehaviour:
   m_ObjectHideFlags: 0

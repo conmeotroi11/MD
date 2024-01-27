@@ -9,12 +9,20 @@ public class SpecialFire : MonoBehaviour
     [SerializeField] private int damageAmount;
     [SerializeField] private GameObject fireVFXDeath;
     [SerializeField] private GameObject firePrefab;
+    private SpriteRenderer fireRenderer;
+    private Collider2D coll;
+    private void Start()
+    {
+        fireRenderer = GetComponent<SpriteRenderer>();
+        coll = GetComponent<Collider2D>();
+    }
 
 
     void Update()
     {
         MoveFire();
     }
+ 
     private void MoveFire()
     {
         transform.Translate(Vector3.right * moveSpeed * Time.deltaTime);
@@ -22,7 +30,9 @@ public class SpecialFire : MonoBehaviour
 
     private void OnDisable()
     {
-           StopAllCoroutines();
+        StopAllCoroutines();
+        fireRenderer.enabled = true;
+        coll.enabled = true;
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -38,13 +48,14 @@ public class SpecialFire : MonoBehaviour
             }
             EnemyHealth enemyHealth = collision.gameObject.GetComponent<EnemyHealth>();
             enemyHealth.TakeDame(damageAmount);
-            Instantiate(fireVFXDeath, transform.position, transform.rotation);
+            Instantiate(fireVFXDeath, collision.transform.position, transform.rotation);
             SFXManager.Instance.PlayAudio(1);
             StartCoroutine(SetActiveRoutine());
             
         }
+        
 
-        if (collision.transform.CompareTag("Collider"))
+         if (collision.transform.CompareTag("Collider") )
         {
             Instantiate(fireVFXDeath, transform.position, transform.rotation);
             SFXManager.Instance.PlayAudio(1);
@@ -78,7 +89,8 @@ public class SpecialFire : MonoBehaviour
 
     private IEnumerator SetActiveRoutine()
     {
-        
+        coll.enabled = false;
+        fireRenderer.enabled = false;
         yield return new WaitForSeconds(1f);
         gameObject.SetActive(false);
     }
