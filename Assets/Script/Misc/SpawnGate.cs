@@ -5,26 +5,17 @@ using UnityEngine;
 public class SpawnGate : MonoBehaviour
 {
     [SerializeField] private GameObject gate;
-    [SerializeField] private List<GameObject> enemies;
+    private int enemyIndex;
+    public int EnemyIndex { get { return enemyIndex; } set { enemyIndex = value; } }
+    [SerializeField] private EnemyCountData enemyCountData;
+
 
     void Update()
     {
-        bool allEnemiesDestroyed = true;
-
-        foreach (GameObject enemy in enemies)
-        {
-            if (enemy != null)
-            {
-              
-                allEnemiesDestroyed = false;
-                break;
-            }
-        }
-
-       
-        if (allEnemiesDestroyed)
+       if(enemyIndex >= enemyCountData.enemyCount)
         {
             gate.SetActive(true);
         }
+
     }
 }

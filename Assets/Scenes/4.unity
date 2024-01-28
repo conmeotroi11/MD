@@ -20144,6 +20144,14 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 214495977}
     - target: {fileID: 4146630838583285200, guid: c958174b6d0213c47bce27aa91c29a8a, type: 3}
+      propertyPath: enemyCount
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4146630838583285200, guid: c958174b6d0213c47bce27aa91c29a8a, type: 3}
+      propertyPath: enemyCountData
+      value: 
+      objectReference: {fileID: 11400000, guid: 494abd3f08e58314e89d6d4ce8585b1d, type: 2}
+    - target: {fileID: 4146630838583285200, guid: c958174b6d0213c47bce27aa91c29a8a, type: 3}
       propertyPath: enemies.Array.size
       value: 1
       objectReference: {fileID: 0}
@@ -31958,6 +31966,7 @@ MonoBehaviour:
   knockBackThurst: 1
   enemyObjectPooling: {fileID: 0}
   isBoss: 1
+  spawnGate: {fileID: 0}
 --- !u!70 &1100707210
 CapsuleCollider2D:
   m_ObjectHideFlags: 0

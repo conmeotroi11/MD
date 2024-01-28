@@ -100,7 +100,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 25
-  damageAmount: 10
+  damageAmount: 3
   fireVFXDeath: {fileID: 1645801044292590791, guid: fe92f7f7f7d6f53488e8b2b3b8407675, type: 3}
 --- !u!70 &3505157910682335306
 CapsuleCollider2D:

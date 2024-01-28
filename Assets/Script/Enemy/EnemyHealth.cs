@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -14,7 +15,7 @@ public class EnemyHealth : MonoBehaviour
     [SerializeField] private float knockBackThurst;
     [SerializeField] private GameObject enemyObjectPooling;
     [SerializeField] private bool isBoss;
-
+    [SerializeField] private SpawnGate spawnGate;
 
 
 
@@ -22,13 +23,22 @@ public class EnemyHealth : MonoBehaviour
     {
         GetHitFlash = GetComponent<GetHitFlash>(); 
         knockback = GetComponent<Knockback>();
-
+        
 
     }
 
     private void Start()
     {
         currentHealth = startHealth; 
+    }
+
+    private void Update()
+    {
+        if(spawnGate == null)
+        {
+            spawnGate = GameObject.Find("Spawn Gate").GetComponent<SpawnGate>();
+        }
+        
     }
 
     public void TakeDame(int damage) 
@@ -55,10 +65,12 @@ public class EnemyHealth : MonoBehaviour
             currentHealth = startHealth;
             if(isBoss)
             {
+                spawnGate.EnemyIndex += 1;
                 Destroy(gameObject);
             }
             else
             {
+                spawnGate.EnemyIndex += 1;
                 foreach (Transform child in enemyObjectPooling.transform)
                 {
 

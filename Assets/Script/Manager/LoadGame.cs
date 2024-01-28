@@ -10,10 +10,8 @@ public class LoadGame : MonoBehaviour
     [SerializeField] private GameObject Pool;
     void Start()
     {
-        Save.LoadData();
-        WeaponLoad();
-
-
+        
+        Save.DeleteKey();
 
 
     }

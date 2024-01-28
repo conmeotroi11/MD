@@ -64003,7 +64003,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Damage : 1
+  m_text: 'Damage : 2
 
     Cooldown : 0.4
 

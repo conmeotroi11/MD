@@ -17,21 +17,25 @@ public class Quest : MonoBehaviour
     private bool firstQuest = false;
     private bool secondQuest = false;
 
-
+    private void Start()
+    {
+        
+    }
 
     void Update()
     {
         UnlockFirstQuestButton();
         UnlockSecondQuestButton();
         LoadQuest();
-        if(firstQuest == true)
+        if (firstQuest == true)
         {
             Destroy(firstQuestPanel);
         }
-        if(secondQuest == true)
+        if (secondQuest == true)
         {
             Destroy(secondQuestPanel);
         }
+
     }
 
     void OnCollisionExit2D(Collision2D collision)
@@ -47,20 +51,20 @@ public class Quest : MonoBehaviour
         CoinManager.Instance.Coin += 4;
         firstQuest = true;
         SaveQuest();
-
+      
     }
     public void SecondQuest()
     {
         CoinManager.Instance.Coin += 10;
         secondQuest = true;
         SaveQuest();
-
+       
 
     }
 
     private void UnlockFirstQuestButton()
     {
-        if(PlayerCheck.Instance.DefeatEnemy == true)
+        if (PlayerCheck.Instance.FirstQuestCheck == true)
         {
             firstQuestButton.interactable = true;
             firstQuestButtonText.text = "Completed";

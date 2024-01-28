@@ -4,18 +4,21 @@ using UnityEngine;
 
 public class PlayerCheck : Singleton<PlayerCheck>
 {
-    private bool firstBossDeath = false;
+    [SerializeField]private bool firstBossDeath = false;
     private bool secondBossDeath = false;
-    private bool defeatEnemy = false;
+   [SerializeField] private bool firstQuestCheck = false;
+
     public bool FirstBossDeath { get { return firstBossDeath; }}
     public bool SecondBossDeath { get { return secondBossDeath; }}
-    public bool DefeatEnemy { get { return defeatEnemy; }}
+    public bool FirstQuestCheck { get { return firstQuestCheck; } }
+
     private void Start()
     {
         LoadData();
         FirstBossDeathEvent.FirstBossDeath += FirstBossDefeat;
         SecondBossDeathEvent.SecondBossDeath += SecondBossDefeat;
-        QuestEvent.DefeatEnemy += DefeatEnemies;
+        QuestEvent.FirstQuestCheck += FirstQuestEvent;
+
     }
 
     private void FirstBossDefeat()
@@ -29,16 +32,18 @@ public class PlayerCheck : Singleton<PlayerCheck>
         SaveData();
     }
 
-    private void DefeatEnemies()
+    private void FirstQuestEvent()
     {
-        defeatEnemy = true;
-        SaveData() ;
+        firstQuestCheck = true;
+        SaveData();
     }
+
+
     private void SaveData()
     {
         PlayerPrefs.SetInt("FirstBossDeath", firstBossDeath ? 1 : 0);
         PlayerPrefs.SetInt("SecondBossDeath", secondBossDeath ? 1 : 0);
-        PlayerPrefs.SetInt("DefeatEnemies", defeatEnemy ? 1 : 0);
+        PlayerPrefs.SetInt("FirstQuestCheck", firstQuestCheck ? 1 : 0);
         PlayerPrefs.Save();
     }
 
@@ -46,6 +51,7 @@ public class PlayerCheck : Singleton<PlayerCheck>
     {
         firstBossDeath = PlayerPrefs.GetInt("FirstBossDeath", 0) == 1;
         secondBossDeath = PlayerPrefs.GetInt("SecondBossDeath", 0) == 1;
-        defeatEnemy = PlayerPrefs.GetInt("DefeatEnemies", 0) == 1;
+        firstQuestCheck = PlayerPrefs.GetInt("FirstQuestCheck", 0) == 1;
+
     }
 }
